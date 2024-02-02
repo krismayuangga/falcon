@@ -1,0 +1,73 @@
+.td0{
+	text-align: center;
+	font-size: 30px;
+	border-radius: 16px;
+	padding: 8px;
+	box-shadow: 0px 0px 8px #e16317,0px 0px 10px #e16317,0px 0px 12px #e16317;
+	background: #222222;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to bottom, #434343, #222222);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to bottom, #434343, #222222); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.td1{
+	text-align: center;
+	border-radius: 16px;
+	padding: 12px;
+	box-shadow: 0px 0px 8px #b7ef0b,0px 0px 12px #b7ef0b,0px 0px 15px #b7ef0b;
+	background: #222222;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to bottom, #434343, #222222);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to bottom, #434343, #222222); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.img1{
+	box-shadow: 0px 4px 4px #000;
+}
+
+.tdidea1{
+	height: 50px;
+	width: 50%;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	box-shadow: 0px 4px 7px #000;
+	background: #fe8c00;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #f83600, #fe8c00);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #f83600, #fe8c00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.btnidea1{
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 32px;
+	color: #FFF;
+	font-weight: bold;
+	text-shadow: 1px 1px #000;
+	background: none;
+	border: none;
+}
+
+.tdgo1{
+	height: 50px;
+	width: 50%;
+	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
+	box-shadow: 0px 4px 7px #000;
+	background: #FFE000;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #799F0C, #FFE000);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #799F0C, #FFE000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.btngo1{
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 32px;
+	color: #FFF;
+	font-weight: bold;
+	text-shadow: 1px 1px #000;
+	background: none;
+	border: none;
+}
+
