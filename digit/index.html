@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="en">
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Kinerja Digit</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="title" content="Kinerja DigitPad Deriv.com Bots">
+        <meta name="description"
+                content="Kinerja DigitPad is a free-trading app that provides features . for Deriv.com ">
+        <meta name="keywords"
+                content="digital options, forex, forex trading, online trading, financial trading, digitals trading, index trading, trading indices, forex trades, trading commodities, digital options strategy, binary broker, binary bet, digital options trading platform, binary strategy, finance, investment, trading">
+        <meta name="robots" content="index, follow">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="language" content="English">
+
+        <link rel="shortcut icon" href="image/favicon.png" />
+        <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+        <!-- Remember to include jQuery :) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+
+        <!-- jQuery Modal -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+        <style type="text/css">
+                body,
+                html {
+                        height: 98%;
+                        width: 99%;
+                }
+
+                body,
+                td,
+                th {
+                        font-family: monospace;
+                }
+
+                body {
+                        background: linear-gradient(147deg, #000000 0%, #2c3e50 74%) !important;
+                }
+
+                table,
+                th,
+                td {
+                        /* border: 0px; */
+                        border-radius: 4px;
+                }
+
+                input[type=text],
+                input[type=password],
+                select,
+                input[type=number] {
+                        border-radius: 5px;
+                }
+
+                input[type=button] {
+                        color: white !important;
+                        font: 2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+                        font-size: 70%;
+                        padding: 14px;
+                        background-color: rgb(99, 99, 98);
+                        /* border:1px solid #ffcc00; */
+                        -moz-border-radius: 10px;
+                        -webkit-border-radius: 10px;
+                        border-radius: 10px;
+                        /* border-bottom: 1px solid #9f9f9f; */
+                        -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+                        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+                        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+                        cursor: pointer;
+                }
+
+                input[type=button]:hover {
+                        background-color: rgb(99, 99, 98)
+                }
+
+                .button-act {
+                        background-color: #1d9037 !important;
+                        /* Green */
+                        border: none !important;
+                        color: white !important;
+                        text-align: center;
+                        text-decoration: none;
+                        display: inline-block;
+                        font-size: 14px !important;
+                        border-radius: 2px !important;
+                }
+
+                .fa {
+                        color: #FFF;
+                }
+
+                .btn-auto-trade {
+                        width: 100%;
+                        height: 65px;
+                        margin-bottom: 5px;
+                        background-color: #314975;
+                }
+
+                .btn-auto-trade a {
+                        line-height: 5em;
+                        display: inline-block;
+                        height: 50px;
+                        color: white;
+                        text-decoration: none;
+                }
+
+                .myButton {
+                        background: linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+                        background-color: #44c767;
+                        border-radius: 12px;
+                        display: inline-block;
+                        cursor: pointer;
+                        color: #ffffff;
+                        font-family: Arial;
+                        font-size: 17px;
+                        padding: 5px 29px;
+                        text-decoration: none;
+                        text-shadow: 0px 1px 0px #2f6627;
+                        float: right;
+                        margin-top: 2em;
+                }
+
+                .myButton:hover {
+                        background: linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+                        background-color: #5cbf2a;
+                }
+
+                .myButton:active {
+                        position: relative;
+                        top: 1px;
+                }
+
+
+                .close-btn {
+                        background-color: #d60b3e;
+                        border-radius: 12px;
+                        display: inline-block;
+                        cursor: pointer;
+                        color: #ffffff;
+                        font-family: Arial;
+                        font-size: 17px;
+                        padding: 5px 29px;
+                        text-decoration: none;
+                        margin-top: 2em;
+                }
+        </style>
+</head>
+
+<body style="text-align: center;">
+        <a href="https://signal.kinerja.io/" target="_blank" class="fa fa-rocket">&nbsp;Daily Signal</a> &nbsp;
+	<a href="https://bit.ly/kinerjatradesignal" target="_blank" class="fa fa-telegram">&nbsp;Telegram</a> &nbsp;
+	<a href="https://www.facebook.com/people/Kinerja-Trade/100089905780607/" target="_blank" class="fa fa-facebook">&nbsp;Facebook</a> &nbsp;
+	<a href="https://bit.ly/kinerjayoutube" target="_blank" class="fa fa-youtube">&nbsp;Youtube&nbsp;</a>
+	<a href="#" target="_blank" style="color: #FFF;">
+		<i class="fa fa-copyright" style="font-size: inherit;"></i> Copy Trading</a>
+
+        <div id="ex1" class="modal">
+                <table width="100%">
+                        <tr>
+                                <td><strong>Strategy: </strong> </td>
+                                <td>
+                                        <select style="width:97%;" class="dropdown-select" name="selDur" size="1"
+                                                id="txtStratemdl">
+                                                <option value="0">DIGIT DIFFER </option>
+                                                <option value="1">ODD-EVEN</option>
+                                        </select>
+                                </td>
+                        </tr>
+                        <tr>
+                                <td><strong>Stake: </strong></td>
+                                <td>
+                                        <input type="number" name="txtStake" id="txtStakemdl"
+                                                style="text-align:center; width:96%;" value="6" min="0.35" />
+                                </td>
+                        </tr>
+                        <tr>
+                                <td><strong>Martingale: </strong></td>
+                                <td>
+                                        <input type="number" name="txtStake" id="txtMartinmdl"
+                                                style="text-align:center; width:96%;" value="1" min="1" />
+                                </td>
+                        </tr>
+                        <tr>
+                                <td><strong>Target Profit: </strong></td>
+                                <td>
+                                        <input type="number" name="txtStake" id="txtTPmdl"
+                                                style="text-align:center; width:96%;" value="2" min="0.35" />
+                                </td>
+                        </tr>
+                        <tr>
+                                <td><strong>Stop Loss: </strong></td>
+                                <td>
+                                        <input type="number" name="txtStake" id="txtSLmdl"
+                                                style="text-align:center; width:96%;" value="10" min="0.35" />
+                                </td>
+                        </tr>
+                </table>
+                <a href="#" rel="modal:close" class="close-btn">Close</a>
+                <a href="#" class="myButton" onclick="return AutoTrade();" rel=" modal:close">start</a>
+        </div>
+
+        <!-- Link to open the modal -->
+        <!-- <p><a href="#ex1" rel="modal:open">Open Modal</a></p> -->
+        <table width="100%" height="100%">
+                <tr>
+                        <td>
+                                <table align="center" border="1" bordercolor="#767575" style="background-color:#4d4b4b">
+                                        <tr>
+                                                <th width="100" height="35" colspan="2" rowspan="2" align="center"
+                                                        valign="middle" scope="col">
+                                                        <!-- <input style="width:100%; height:65px;margin-bottom: 5px;" name="btnRefresh" type="button"
+                                id="btnRefresh" value="Refresh" class="button-act" onclick="refresh();" /> -->
+
+                                                        <input style="width:100%; height:65px;margin-bottom: 5px;"
+                                                                name="btnAutoTrade" type="button" id="btnAutoTrade"
+                                                                value="Auto Trade : Start" class="button-act"
+                                                                onclick="StartAutoTrade();" />
+
+                                                        <!-- <div id="btnAutoTrade" class="btn-auto-trade">
+                                                                <a href="#ex1" rel="modal:open" id="alablebtnstart">Auto
+                                                                        Trade : Start</a>
+                                                        </div> -->
+
+                                                        <font color="white">Analizing</font>
+                                                        <input style="text-align:center; width:50px;" name="txtSample"
+                                                                id="txtSample" type="number" min="10" max="1000"
+                                                                value="100" /> <font color="white">last ticks</font>
+                                                </th>
+                                                <th height="35" colspan="12" align="center" valign="middle" scope="col">
+                                                        <font color="white">D I G I T</font>&emsp;<input type="button" value=""
+                                                                style="width:20px; height:20px;" />
+                                                        <font size="-1"> <font color="white">DIFFER</font>&emsp;
+                                                        <input type="button" value=""
+                                                                style="width:20px; height:20px; background-color:#F00" />
+                                                        <font size="-1"><font color="white">DIFFER(min)</font>&emsp;
+                                                        <input type="button" value=""
+                                                                style="width:20px; height:20px; background-color:#589658" />
+                                                        <font size="-1"><font color="white">DIFFER(max)</font>&emsp;
+                                                        <input type="button" value=""
+                                                                style="width:20px; height:20px; background-color:#2897f5" />
+                                                        <font size="-1"><font color="white">EVEN</font>&emsp;
+                                                        <input type="button" value=""
+                                                                style="width:20px; height:20px; background-color:#e16317" />
+                                                        <font size="-1"><font color="white">ODD</font>
+                                                </th>
+                                                <th width="150" rowspan="2" align="center" valign="middle" scope="col">
+                                                        <table width="100%">
+                                                                <tr>
+                                                                        <td>
+                                                                                <strong><font color="white">Token:</font></strong>
+                                                                        </td>
+                                                                        <td>
+                                                                                <input type="password" name="txtToken"
+                                                                                        id="txtToken"
+                                                                                        style="text-align:center; width:96%;" />
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td colspan="2">
+                                                                                <input type="button" class="button-act"
+                                                                                        name="btnConnect"
+                                                                                        id="btnConnect" value="Connect"
+                                                                                        style="width:100%"
+                                                                                        onclick="authorize();" />
+                                                                        </td>
+                                                                </tr>
+                                                        </table>
+                                                        <strong><em><font color="white">Balance:</font></em>
+                                                                <font color="white">$</font><label id="lblBalance"><font color="white">0.00</font></label></strong> <br>
+                                                        <strong><em><font color="white">Profit:</font></em>
+                                                                <font color="white">$</font><label id="lblProfit"><font color="white">0.00</font></label></strong>
+                                                </th>
+                                        </tr>
+                                        <tr>
+                                                <th bgcolor="#202121" width="50" height="50" align="center" valign="middle" scope="col"><font color="white">0</font>
+                                                </th>
+                                                <th bgcolor="#202121" width="50" height="50" align="center" valign="middle" scope="col"><font color="white">1</font>
+                                                </th>
+                                                <th bgcolor="#202121" width="50" height="50" align="center" valign="middle" scope="col"><font color="white">2</font>
+                                                </th>
+                                                <th bgcolor="#202121" width="50" height="50" align="center" valign="middle" scope="col"><font color="white">3</font>
+                                                </th>
+                                                <th bgcolor="#202121" width="50" height="50" align="center" valign="middle" scope="col"><font color="white">4</font>
+                                                </th>
+                                                <th bgcolor="#202121" width="50" height="50" align="center" valign="middle" scope="col"><font color="white">5</font>
+                                                </th>
+                                                <th bgcolor="#202121" width="50" height="50" align="center" valign="middle" scope="col"><font color="white">6</font>
+                                                </th>
+                                                <th bgcolor="#202121" width="50" height="50" align="center" valign="middle" scope="col"><font color="white">7</font>
+                                                </th>
+                                                <th bgcolor="#202121" width="50" height="50" align="center" valign="middle" scope="col"><font color="white">8</font>
+                                                </th>
+                                                <th bgcolor="#202121" width="50" height="50" align="center" valign="middle" scope="col"><font color="white">9</font>
+                                                </th>
+                                                <th bgcolor="#202121" width="50" height="50" align="center" valign="middle" scope="col">
+                                                        <font color="white">Even</font></th>
+                                                <th bgcolor="#202121" width="50" height="50" align="center" valign="middle" scope="col">
+                                                        <font color="white">Odd</font></th>
+                                        </tr>
+                                        <tr>
+                                                <th bgcolor="#202121" width="45" rowspan="7" align="center" valign="middle" scope="col">
+                                                        <p><font color="white">M</font></p>
+                                                        <p><font color="white">A</font></p>
+                                                        <p><font color="white">R</font></p>
+                                                        <p><font color="white">K</font></p>
+                                                        <p><font color="white">E</font></p>
+                                                        <p><font color="white">T</font></p>
+                                                </th>
+    <th bgcolor="#202121" width="150" height="50" align="center" valign="middle" scope="col"><font color="white">Vol 10</font>
+                                                        </th>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_10^0"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_10^1"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_10^2"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_10^3"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_10^4"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_10^5"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_10^6"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_10^7"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_10^8"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_10^9"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td bgcolor="#2c2d2d" id="10-e" width="50" height="50" align="center" valign="middle">
+                                                        <input id="R_10^even" onclick="ezBuyDigEvOd(this.id);"
+                                                                type="button" value=""
+                                                                style="width:50px; height:50px; background-color:#2897f5" />
+                                                </td>
+                                                <td bgcolor="#2c2d2d" id="10-o" width="50" height="50" align="center" valign="middle">
+                                                        <input id="R_10^odd" onclick="ezBuyDigEvOd(this.id);"
+                                                                type="button" value=""
+                                                                style="width:50px; height:50px; background-color:#e16317" />
+                                                </td>
+                                                <th width="150" align="center" valign="top" scope="col">
+                                                        <table width="100%">
+                                                                <tr>
+                                                                        <td>
+                                                                                <strong><font color="white">Stake:</font></strong>
+                                                                        </td>
+                                                                        <td>
+                                                                                <input type="number" name="txtStake"
+                                                                                        id="txtStake"
+                                                                                        style="text-align:center; width:96%;"
+                                                                                        value="1" min="0.35" />
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>
+                                                                                <strong><font color="white">Duration:</font></strong>
+                                                                        </td>
+                                                                        <td>
+                                                                                <select style="width:100%;"
+                                                                                        class="dropdown-select"
+                                                                                        name="selDur" size="1"
+                                                                                        id="selDur">
+                                                                                        <option value="RANDOM">Random
+                                                                                        </option>
+                                                                                        <option value="1"
+                                                                                                selected="selected">1
+                                                                                                tick</option>
+                                                                                        <option value="2">2 ticks
+                                                                                        </option>
+                                                                                        <option value="3">3 ticks
+                                                                                        </option>
+                                                                                        <option value="4">4 ticks
+                                                                                        </option>
+                                                                                        <option value="5">5 ticks
+                                                                                        </option>
+                                                                                        <option value="6">6 ticks
+                                                                                        </option>
+                                                                                        <option value="7">7 ticks
+                                                                                        </option>
+                                                                                        <option value="8">8 ticks
+                                                                                        </option>
+                                                                                        <option value="9">9 ticks
+                                                                                        </option>
+                                                                                        <option value="10">10 ticks
+                                                                                        </option>
+                                                                                </select>
+                                                                        </td>
+                                                                </tr>
+                                                        </table>
+                                                </th>
+                                        </tr>
+                                        <tr>
+        <th bgcolor="#202121" width="150" height="50" align="center" valign="middle" scope="col"><font color="white">Vol 25</font>
+                                                        </th>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_25^0"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_25^1"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_25^2"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_25^3"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_25^4"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_25^5"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_25^6"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_25^7"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_25^8"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_25^9"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td bgcolor="#2c2d2d" width="50" height="50" align="center" valign="middle"><input
+                                                                id="R_25^even" onclick="ezBuyDigEvOd(this.id);"
+                                                                type="button" value=""
+                                                                style="width:50px; height:50px; background-color:#2897f5" />
+                                                </td>
+                                                <td bgcolor="#2c2d2d" width="50" height="50" align="center" valign="middle"><input
+                                                                id="R_25^odd" onclick="ezBuyDigEvOd(this.id);"
+                                                                type="button" value=""
+                                                                style="width:50px; height:50px; background-color:#e16317" />
+                                                </td>
+                                                <th width="150" rowspan="6" align="center" valign="top" scope="col">
+                                                        <div id="log"
+                                                                style="text-align:left; width:150px; height:330px; font-size: 0.9em; border:thin; background-color:#080808;overflow-y:scroll;">
+                                                        </div>
+                                                </th>
+
+                                        </tr>
+                                        <tr>
+                                                <th bgcolor="#202121" width="150" height="50" align="center" valign="middle" scope="col"><font color="white">Vol 50</font>
+                                                        </th>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_50^0"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_50^1"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_50^2"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_50^3"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_50^4"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_50^5"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_50^6"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_50^7"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_50^8"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_50^9"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td bgcolor="#2c2d2d" width="50" height="50" align="center" valign="middle"><input
+                                                                id="R_50^even" onclick="ezBuyDigEvOd(this.id);"
+                                                                type="button" value=""
+                                                                style="width:50px; height:50px; background-color:#2897f5" />
+                                                </td>
+                                                <td bgcolor="#2c2d2d" width="50" height="50" align="center" valign="middle"><input
+                                                                id="R_50^odd" onclick="ezBuyDigEvOd(this.id);"
+                                                                type="button" value=""
+                                                                style="width:50px; height:50px; background-color:#e16317" />
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <th bgcolor="#202121" width="150" height="50" align="center" valign="middle" scope="col"><font color="white">Vol 75</font>
+                                                        </th>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_75^0"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_75^1"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_75^2"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_75^3"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_75^4"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_75^5"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_75^6"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_75^7"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_75^8"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_75^9"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td bgcolor="#2c2d2d" width="50" height="50" align="center" valign="middle"><input
+                                                                id="R_75^even" onclick="ezBuyDigEvOd(this.id);"
+                                                                type="button" value=""
+                                                                style="width:50px; height:50px; background-color:#2897f5" />
+                                                </td>
+                                                <td bgcolor="#2c2d2d" width="50" height="50" align="center" valign="middle"><input
+                                                                id="R_75^odd" onclick="ezBuyDigEvOd(this.id);"
+                                                                type="button" value=""
+                                                                style="width:50px; height:50px; background-color:#e16317" />
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <th bgcolor="#202121" width="150" height="50" align="center" valign="middle" scope="col"><font color="white">Vol 100</font>
+                                                        </th>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_100^0"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_100^1"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_100^2"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_100^3"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_100^4"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_100^5"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_100^6"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_100^7"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_100^8"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="R_100^9"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td bgcolor="#2c2d2d" width="50" height="50" align="center" valign="middle"><input
+                                                                id="R_100^even" onclick="ezBuyDigEvOd(this.id);"
+                                                                type="button" value=""
+                                                                style="width:50px; height:50px; background-color:#2897f5" />
+                                                </td>
+                                                <td bgcolor="#2c2d2d" width="50" height="50" align="center" valign="middle"><input
+                                                                id="R_100^odd" onclick="ezBuyDigEvOd(this.id);"
+                                                                type="button" value=""
+                                                                style="width:50px; height:50px; background-color:#e16317" />
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <th bgcolor="#202121" width="150" height="50" align="center" valign="middle" scope="row"><font color="white">Bear</font>
+                                                        </th>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBEAR^0"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBEAR^1"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBEAR^2"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBEAR^3"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBEAR^4"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBEAR^5"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBEAR^6"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBEAR^7"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBEAR^8"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBEAR^9"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td bgcolor="#2c2d2d" width="50" height="50" align="center" valign="middle"><input
+                                                                id="RDBEAR^even" onclick="ezBuyDigEvOd(this.id);"
+                                                                type="button" value=""
+                                                                style="width:50px; height:50px; background-color:#2897f5" />
+                                                </td>
+                                                <td bgcolor="#2c2d2d" width="50" height="50" align="center" valign="middle"><input
+                                                                id="RDBEAR^odd" onclick="ezBuyDigEvOd(this.id);"
+                                                                type="button" value=""
+                                                                style="width:50px; height:50px; background-color:#e16317" />
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <th bgcolor="#202121" width="150" height="50" align="center" valign="middle" scope="row"><font color="white">Bull</font>
+                                                        </th>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBULL^0"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBULL^1"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBULL^2"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBULL^3"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBULL^4"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBULL^5"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBULL^6"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBULL^7"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBULL^8"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td width="50" height="50" align="center" valign="middle"
+                                                        bgcolor="#2c2d2d"><input id="RDBULL^9"
+                                                                onclick="ezBuyDigDiff(this.id);" type="button" value=""
+                                                                style="width:50px; height:50px;" /></td>
+                                                <td bgcolor="#2c2d2d" width="50" height="50" align="center" valign="middle"><input
+                                                                id="RDBULL^even" onclick="ezBuyDigEvOd(this.id);"
+                                                                type="button" value=""
+                                                                style="width:50px; height:50px; background-color:#2897f5" />
+                                                </td>
+                                                <td bgcolor="#2c2d2d" width="50" height="50" align="center" valign="middle"><input
+                                                                id="RDBULL^odd" onclick="ezBuyDigEvOd(this.id);"
+                                                                type="button" value=""
+                                                                style="width:50px; height:50px; background-color:#e16317" />
+                                                </td>
+                                        </tr>
+                                </table>
+                        </td>
+                </tr>
+        </table>
+
+
+        <script type="text/javascript" src="js/digstat.js"></script>
+
+        <!-- <a href='http://www.freevisitorcounters.com'>Freevisitorcounters</a>
+        <script type='text/javascript'
+                src='https://www.freevisitorcounters.com/auth.php?id=493131fd1b9ed7a615638afb3d81cb3458f6452f'></script>
+        <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/608118/t/3"></script> -->
+</body>
+
+
+</html>

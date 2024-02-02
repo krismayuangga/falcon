@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta name="title" content="OD/EV Deriv.com Bots">
+	<meta name="description"
+	
+		content="Kinerja EV-OD is a free-trading app that provides features . for Deriv.com ">
+	<meta name="keywords"
+
+		content="digital options, forex, forex trading, online trading, financial trading, digitals trading, index trading, trading indices, forex trades, trading commodities, digital options strategy, binary broker, binary bet, digital options trading platform, binary strategy, finance, investment, trading">
+	<meta name="robots" content="index, follow">
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=0.75, shrink-to-fit=no">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png">
+	<!-- Main CSS-->
+	<link rel="stylesheet" type="text/css" href="assets/ValiAdmin/css/main.css">
+	<!-- Font-icon css
+	<link rel="stylesheet" type="text/css"
+		href="attrib/maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+	<link rel="stylesheet" type="text/css" href="assets/css/fontawesome-free/css/all.css">
+	<link rel="stylesheet" href="assets/css/sweetalert.css">
+	<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+	<style type="text/css">
+		body,
+		html {
+			height: 98%;
+			width: 99%;
+		}
+
+		body,
+		td,
+		th {
+			font-family: monospace;
+		}
+
+		body {
+			background: linear-gradient(147deg, #000000 0%, #2c3e50 74%) !important;
+		}
+
+		table,
+		th,
+		td {
+			/* border: 0px; */
+			border-radius: 4px;
+		}
+
+		#return-to-top {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			background: rgb(0, 0, 0);
+			background: rgba(0, 0, 0, 0.7);
+			width: 50px;
+			height: 50px;
+			display: block;
+			text-decoration: none;
+			-webkit-border-radius: 35px;
+			-moz-border-radius: 35px;
+			border-radius: 35px;
+			display: none;
+			-webkit-transition: all 0.3s linear;
+			-moz-transition: all 0.3s ease;
+			-ms-transition: all 0.3s ease;
+			-o-transition: all 0.3s ease;
+			transition: all 0.3s ease;
+		}
+
+		#return-to-top i {
+			color: #fff;
+			margin: 0;
+			position: relative;
+			left: 16px;
+			top: 13px;
+			-webkit-transition: all 0.3s ease;
+			-moz-transition: all 0.3s ease;
+			-ms-transition: all 0.3s ease;
+			-o-transition: all 0.3s ease;
+			transition: all 0.3s ease;
+		}
+
+		#return-to-top:hover {
+			background: rgba(0, 0, 0, 0.9);
+		}
+
+		#return-to-top:hover i {
+			color: #fff;
+			top: 5px;
+		}
+
+		.modal-dialog {
+			max-width: 800px;
+			margin: 30px auto;
+		}
+
+		.modal-body {
+			position: relative;
+			padding: 0px;
+		}
+
+		.close {
+			position: absolute;
+			right: -30px;
+			top: 0;
+			z-index: 999;
+			font-size: 2rem;
+			font-weight: normal;
+			color: #fff;
+			opacity: 1;
+		}
+
+		.bg-info {
+			background-color: #54595f !important;
+			border-radius: 30px;
+			font-family: sans-serif;
+		}
+
+		input[type="button"i] {
+			border: none;
+		}
+	</style>
+</head>
+
+<body class="app sidebar-mini rtl" style="text-align: center;padding-top: 0.5em;">
+		<a href="https://signal.kinerja.io/" target="_blank" class="fa fa-rocket">&nbsp;Daily Signal</a> &nbsp;
+	<a href="https://bit.ly/kinerjatradesignal" target="_blank" class="fa fa-telegram">&nbsp;Telegram</a> &nbsp;
+	<a href="https://www.facebook.com/people/Kinerja-Trade/100089905780607/" target="_blank" class="fa fa-facebook">&nbsp;Facebook</a> &nbsp;
+	<a href="https://bit.ly/kinerjayoutube" target="_blank" class="fa fa-youtube">&nbsp;Youtube&nbsp;</a>
+	<a href="#" target="_blank" style="color: #FFF;">
+		<i class="fa fa-copyright" style="font-size: inherit;"></i> Copy Trading</a>
+
+	<main class="app-content" style="background-color: transparent;">
+		<form action="#" method="post" id="save_setting">
+			<div class="row">
+				<div class="container pt-2">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body" style="color: white;">
+								<div class="row">
+									<!-- column -->
+									<div class="col-lg-12">
+										<div class="container">
+											<div class="col-lg-12">
+												<div class="row">
+													<!-- Column -->
+													<div class="col-md-6 col-lg-3 col-xlg-3 pt-2">
+														<div class="card card-hover">
+															<div class="box bg-info text-center">
+																<h7 class="font-light text-white"><i id="lblAcc">ACC</i>
+																</h7>
+																<h6 class="text-white">Account</h6>
+															</div>
+														</div>
+													</div>
+													<!-- Column -->
+													<div class="col-md-6 col-lg-3 col-xlg-3 pt-2">
+														<div class="card card-hover">
+															<div class="box bg-info text-center">
+																<h7 class="font-light text-white"><i
+																		id="lblEmail">Email</i></h7>
+																<h6 class="text-white">Email</h6>
+															</div>
+														</div>
+													</div>
+													<!-- Column -->
+													<div class="col-md-6 col-lg-3 col-xlg-3 pt-2">
+														<div class="card card-hover">
+															<div class="box bg-info text-center">
+																<h7 class="font-light text-white"><i
+																		id="lblBalatas">00.00</i></h7>
+																<h6 class="text-white">Start Balance</h6>
+															</div>
+														</div>
+													</div>
+													<!-- Column -->
+													<div class="col-md-6 col-lg-3 col-xlg-3 pt-2">
+														<div class="card card-hover">
+															<div class="box bg-info text-center">
+																<h7 class="font-light text-white"><i
+																		id="lblendbalance">00.00</i></h7>
+																<h6 class="text-white">End Balance</h6>
+															</div>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+										<br />
+										<div class="row">
+											<div class="col-md-4" style="border-right:0.01px solid black;">
+												<div class="row">
+													<div class="col-md-6">
+														<form>
+															<div class="form-group" style="text-align: center;"
+																id="signin">
+																<strong>
+																	<h9 style="color: black;">
+																		LOGIN</h9>
+																</strong>
+																<div class="input-group-prepend">
+																	<input type="password" id="txtToken"
+																		class="form-control input-lg pwd"
+																		placeholder="Token...">
+																	<span class="input-group-text btn bg-info reveal"
+																		type="button" id="mata">
+																		<i class="fas fa-eye-slash"></i>
+																	</span></div>
+																<button type="button" id=""
+																	class="btn btn-info btn-block"
+																	onclick="authorize()">CONNECT</button>
+															</div>
+															<div class="row pt-1 justify-content-center" id="signout"
+																style="display: none;">
+																<strong>
+																	<h9 style="color: black;">
+																		LOGOUT</h9>
+																</strong>
+																<button type="button" class="btn btn-danger btn-block"
+																	onclick="logout()">DISCONNECT</button>
+															</div>
+														</form>
+													</div>
+													<div class="col-md-6 text-center">
+									<img src="assets/logokinereven.png">
+
+													</div>
+												</div>
+												<div class="row">
+													<!-- Column -->
+													<div class="col-md-6 col-sm-2 col-xlg-2 pt-2">
+														<div class="card card-hover">
+															<div class="box bg-info text-center">
+																<h7 class="font-light text-white"><i
+																		id="lblProfit">00.00</i></h7>
+																<h6 class="text-white">Earning</h6>
+															</div>
+														</div>
+													</div>
+													<!-- Column -->
+													<div class="col-md-6 col-sm-2 col-xlg-2 pt-2">
+														<div class="card card-hover">
+															<div class="box bg-info text-center">
+																<h7 class="font-light text-white"><i id="lblwinloss">[ 0
+																		: 0 ]</i></h7>
+																<h6 class="text-white">Win/Loss</h6>
+															</div>
+														</div>
+													</div>
+													<!-- Column -->
+												</div>
+												<div class="row">
+													<div class="tile-body">
+														<div class="row">
+															<div class="col-md-4">
+																<div class="form-group">
+																	<label style="font-size: 12px;"
+																		class="control-label">Type Trade</label><br>
+																	<select class="form-control form-control-sm"
+																		id="txtStratemdl" name="selDur"
+																		style="font-size: 8pt;">
+																		<option selected value="0">EV/OD</option>
+																		<option value="1">EVEN</option>
+																		<option value="2">ODD</option>
+																	</select>
+																</div>
+															</div>
+															<div class="col-md-4">
+																<div class="form-group">
+																	<label style="font-size: 12px;"
+																		class="control-label">Duration</label>
+																	<select class="form-control form-control-sm"
+																		name="selDur" id="selDur">
+																		<option value="RANDOM">Random</option>
+																		<option value="1" selected="selected">1 ticks
+																		</option>
+																		<option value="2">2 ticks</option>
+																		<option value="3">3 ticks</option>
+																		<option value="4">4 ticks</option>
+																		<option value="5">5 ticks</option>
+																		<option value="6">6 ticks</option>
+																		<option value="7">7 ticks</option>
+																		<option value="8">8 ticks</option>
+																		<option value="9">9 ticks</option>
+																		<option value="10">10 ticks</option>
+																	</select>
+																</div>
+															</div>
+															<div class="col-md-4">
+																<div class="form-group">
+																	<label style="font-size: 12px;"
+																		class="control-label">Stake</label>
+																	<input type="text"
+																		class="form-control form-control-sm"
+																		id="txtStakemdl" name="txtStake" value="0.35">
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-4">
+																<div class="form-group">
+																	<label style="font-size: 12px;"
+																		class="control-label">Martingale</label>
+																	<input type="text"
+																		class="form-control form-control-sm"
+																		id="txtMartinmdl" name="txtmartin" value="2.30">
+																</div>
+															</div>
+															<div class="col-md-4">
+																<div class="form-group">
+																	<label style="font-size: 12px;"
+																		class="control-label">TP</label>
+																	<input type="text"
+																		class="form-control form-control-sm"
+																		id="txtTPmdl" name="txttp" value="5">
+																</div>
+															</div>
+															<div class="col-md-4">
+																<div class="form-group">
+																	<label style="font-size: 12px;"
+																		class="control-label">SL</label>
+																	<input type="text"
+																		class="form-control form-control-sm"
+																		id="txtSLmdl" name="txtsl" value="50">
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-8">
+												<div class="tab-content">
+													<div class="tab-pane fade active show" id="digittab">
+														<table class="text-center">
+															<tr style="border-bottom:0.02px solid black;">
+																<th width="100" height="35" colspan="2" rowspan="2"
+																	class="text-center" valign="middle" scope="col">
+																	<label style="font-size: 14px;"
+																		class="control-label">Last Digit Stats</label>
+																	<select class="form-control form-control-md"
+																		id="txtSample" name="txtSample"
+																		onchange="getData(this)">
+																		<option value="25">25 Ticks</option>
+																		<option value="50">50 Ticks</option>
+																		<option value="100" selected>100 Ticks</option>
+																		<option value="500">500 Ticks</option>
+																		<option value="1000">1000 Ticks</option>
+																	</select>
+																</th>
+																<th height="35" colspan="12" class="text-center"
+																	valign="middle" scope="col">
+																	MARKET
+																</th>
+															</tr>
+															<tr style="border-bottom:0.02px solid black;">
+																<th width="50" height="50" class="text-center"
+																	valign="middle" scope="col">
+																	Vol 10 <input id="tick_10"
+																		style="border:0px;text-align: center;width: 55px;font-size: smaller;font-style: italic;font-weight: bold;">
+																</th>
+																<th width="50" height="50" class="text-center"
+																	valign="middle" scope="col">
+																	Vol 25 <input id="tick_25"
+																		style="border:0px;text-align: center;width: 55px;font-size: smaller;font-style: italic;font-weight: bold;">
+																</th>
+																<th width="50" height="50" class="text-center"
+																	valign="middle" scope="col">
+																	Vol 50 <input id="tick_50"
+																		style="border:0px;text-align: center;width: 55px;font-size: smaller;font-style: italic;font-weight: bold;">
+																</th>
+																<th width="50" height="50" class="text-center"
+																	valign="middle" scope="col">
+																	Vol 75 <input id="tick_75"
+																		style="border:0px;text-align: center;width: 55px;font-size: smaller;font-style: italic;font-weight: bold;">
+																</th>
+																<th width="50" height="50" class="text-center"
+																	valign="middle" scope="col">
+																	Vol 100 <input id="tick_100"
+																		style="border:0px;text-align: center;width: 55px;font-size: smaller;font-style: italic;font-weight: bold;">
+																</th>
+																<th width="50" height="50" class="text-center"
+																	valign="middle" scope="col">
+																	Bull <input id="tick_bull"
+																		style="border:0px;text-align: center;width: 55px;font-size: 8pt;font-style: italic;font-weight: bold;">
+																</th>
+																<th width="50" height="50" class="text-center"
+																	valign="middle" scope="col">
+																	Bear <input id="tick_bear"
+																		style="border:0px;text-align: center;width: 55px;font-size: 8pt;font-style: italic;font-weight: bold;">
+																</th>
+															</tr>
+															<tr style="border-bottom:0.02px solid black;">
+																<th width="100" colspan="2" height="50"
+																	class="text-center ev" valign="middle" scope="col"
+																	style="color: #2897f5;">
+																	<strong
+																		style="font-weight: bold;font-size: larger;">Even
+																		%</strong></th>
+																<td id="10-e" width="50" height="50"
+																	class="text-center ev" valign="middle">
+																	<input id="R_10^even" onclick="xeven(this.id);"
+																		type="button" value=""
+																		style="color:white;font-size: large;width:70px; height:70px; background-color:#2897f5; border-radius: 50%;" />
+																</td>
+																<td width="50" height="50" class="text-center ev"
+																	valign="middle"><input id="R_25^even"
+																		onclick="xeven(this.id);" type="button" value=""
+																		style="color:white;font-size: large;width:70px; height:70px; background-color:#2897f5; border-radius: 50%;" />
+																</td>
+																<td width="50" height="50" class="text-center ev"
+																	valign="middle"><input id="R_50^even"
+																		onclick="xeven(this.id);" type="button" value=""
+																		style="color:white;font-size: large;width:70px; height:70px; background-color:#2897f5; border-radius: 50%;" />
+																</td>
+																<td width="50" height="50" class="text-center ev"
+																	valign="middle"><input id="R_75^even"
+																		onclick="xeven(this.id);" type="button" value=""
+																		style="color:white;font-size: large;width:70px; height:70px; background-color:#2897f5; border-radius: 50%;" />
+																</td>
+																<td width="50" height="50" class="text-center ev"
+																	valign="middle"><input id="R_100^even"
+																		onclick="xeven(this.id);" type="button" value=""
+																		style="color:white;font-size: large;width:70px; height:70px; background-color:#2897f5; border-radius: 50%;" />
+																</td>
+																<td width="50" height="50" class="text-center ev"
+																	valign="middle"><input id="RDBULL^even"
+																		onclick="xeven(this.id);" type="button" value=""
+																		style="color:white;font-size: large;width:70px; height:70px; background-color:#2897f5; border-radius: 50%;" />
+																</td>
+																<td width="50" height="50" class="text-center ev"
+																	valign="middle"><input id="RDBEAR^even"
+																		onclick="xeven(this.id);" type="button" value=""
+																		style="color:white;font-size: large;width:70px; height:70px; background-color:#2897f5; border-radius: 50%;" />
+																</td>
+															</tr>
+															<tr style="border-bottom:0.02px solid black;">
+																<th width="100" colspan="2" height="50"
+																	class="text-center od" valign="middle" scope="col"
+																	style="color: #e16317;">
+																	<strong
+																		style="font-weight: bold;font-size: larger;">Odd
+																		%</strong< /th>
+																<td id="10-o" width="50" height="50"
+																	class="text-center od" valign="middle">
+																	<input id="R_10^odd" onclick="xodd(this.id);"
+																		type="button" value=""
+																		style="color:white;font-size: large;width:70px; height:70px; background-color:#e16317; border-radius: 50%;" />
+																</td>
+
+																<td width="50" height="50" class="text-center od"
+																	valign="middle"><input id="R_25^odd"
+																		onclick="xodd(this.id);" type="button" value=""
+																		style="color:white;font-size: large;width:70px; height:70px; background-color:#e16317; border-radius: 50%;" />
+																</td>
+																<td width="50" height="50" class="text-center od"
+																	valign="middle"><input id="R_50^odd"
+																		onclick="xodd(this.id);" type="button" value=""
+																		style="color:white;font-size: large;width:70px; height:70px; background-color:#e16317; border-radius: 50%;" />
+																</td>
+																<td width="50" height="50" class="text-center od"
+																	valign="middle"><input id="R_75^odd"
+																		onclick="xodd(this.id);" type="button" value=""
+																		style="color:white;font-size: large;width:70px; height:70px; background-color:#e16317; border-radius: 50%;" />
+																</td>
+																<td width="50" height="50" class="text-center od"
+																	valign="middle"><input id="R_100^odd"
+																		onclick="xodd(this.id);" type="button" value=""
+																		style="color:white;font-size: large;width:70px; height:70px; background-color:#e16317; border-radius: 50%;" />
+																</td>
+																<td width="50" height="50" class="text-center od"
+																	valign="middle"><input id="RDBULL^odd"
+																		onclick="xodd(this.id);" type="button" value=""
+																		style="color:white;font-size: large;width:70px; height:70px; background-color:#e16317; border-radius: 50%;" />
+																</td>
+																<td width="50" height="50" class="text-center od"
+																	valign="middle"><input id="RDBEAR^odd"
+																		onclick="xodd(this.id);" type="button" value=""
+																		style="color:white;font-size: large;width:70px; height:70px; background-color:#e16317; border-radius: 50%;" />
+																</td>
+
+															</tr>
+															<tr>
+																<td>
+																	<input name="btnAutoTrade"
+																		style="background-color: #1d9037;color: white;"
+																		type="button" id="btnAutoTrade"
+																		value="START BOT" class="button btn-block"
+																		onclick="AutoTrade();" />
+																	<input name="btnReset"
+																		style="background-color: red;color: white;"
+																		type="button" id="btnReset" value="RESET"
+																		class="button btn-block"
+																		onclick="location.reload()" />
+																	<strong>Manual Stake: </strong>
+
+																	<input class="form-control input-sm" type="number"
+																		name="txtStake" id="txtStake"
+																		style="text-align:center; width:100%;"
+																		value="0.35" min="0.35" />
+																</td>
+																<td width="50" colspan="8" class="text-center"
+																	valign="top" scope="col">
+																	<div id="log" style="    overflow: auto;
+																		vertical-align: top;
+																		
+																		background-color: rgb(0 0 0);
+																		height: 120px;
+																		font-size: 12px;
+																		color: white;
+																		text-align: left;
+																		padding: 1em;">
+																	</div>
+																</td>
+															</tr>
+
+														</table>
+														<div class="div" style="display: none;">
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_10^0"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_10^1"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_10^2"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_10^3"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_10^4"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_10^5"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_10^6"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_10^7"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_10^8"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_10^9"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_25^0"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_25^1"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_25^2"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_25^3"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_25^4"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_25^5"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_25^6"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_25^7"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_25^8"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_25^9"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_50^0"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_50^1"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_50^2"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_50^3"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_50^4"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_50^5"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_50^6"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_50^7"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_50^8"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_50^9"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_75^0"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_75^1"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_75^2"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_75^3"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_75^4"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_75^5"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_75^6"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_75^7"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_75^8"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_75^9"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_100^0"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_100^1"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_100^2"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_100^3"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_100^4"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_100^5"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_100^6"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_100^7"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_100^8"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="R_100^9"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" />
+															</td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBEAR^0"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBEAR^1"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBEAR^2"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBEAR^3"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBEAR^4"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBEAR^5"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBEAR^6"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBEAR^7"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBEAR^8"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBEAR^9"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBULL^0"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBULL^1"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBULL^2"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBULL^3"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBULL^4"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBULL^5"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBULL^6"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBULL^7"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBULL^8"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+															<td width="50" height="50" class="text-center"
+																valign="middle" bgcolor="#D9ECFF"><input id="RDBULL^9"
+																	onclick="ezBuyDigDiff(this.id);" type="button"
+																	value="" style="width:50px; height:50px;" /></td>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+									<!-- column -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		</form>
+		<div class="container pt-2">
+			<div class="col-md-12">
+				<div class="card" style="background-color: #242e42;">
+					<div class="card-body">
+						<footer class="footer d-flex justify-content-center" id="goFooter">
+							<div class="pull-right hidden-xs">
+							</div>&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;
+							<a href="https://trade.kinerja.io/home/" target="_blank" class="fa fa-home">&nbsp;<strong>Back to Home &copy; </strong></a>
+						</footer>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
+	<a href="javascript:" id="return-to-top" style="font-size: 19px;"><i class="fa fa-arrow-circle-up"></i></a>
+	<!-- Modal -->
+
+	<!-- Essential javascripts for application to work-->
+	<script src="assets/ValiAdmin/js/jquery-3.2.1.min.js"></script>
+	<script src="assets/ValiAdmin/js/main.js"></script>
+	<!-- The javascript plugin to display page loading on top-->
+	</script>
+	<script src="assets/sistem/kalender.js"></script>
+	<script type="text/javascript" src="assets/sistem/digstat.js"></script>
+	<script type="text/javascript">
+		$(".reveal").on('click', function () {
+			var $pwd = $(".pwd");
+			if ($pwd.attr('type') === 'password') {
+				$pwd.attr('type', 'text');
+				$(mata).html($('<i/>', {
+					class: 'fa fa-eye'
+				})).append;
+			} else {
+				$pwd.attr('type', 'password');
+				$(mata).html($('<i/>', {
+					class: 'fa fa-eye-slash'
+				})).append;
+			}
+		});
+	</script>
+</body>
+
+</html>

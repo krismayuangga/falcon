@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Roll Falcon Xbots</title>
+
+  <meta name="description" content="Roll Falcon Xbots, a free tool for Deriv trading, streamlines your experience with innovative features, empowering both novice and seasoned traders for efficient decision-making and strategy execution">
+
+  <meta name="keywords"
+    content="Deriv , digital options, forex, forex trading,LDP Binary Analyser,LDP Binary Analyzer,Binary.com, Deriv.com,online trading, financial trading, digitals trading, index trading, trading indices, forex trades, trading commodities, digital options strategy, binary broker, binary bet, digital options trading platform, binary strategy, finance, investment, trading">
+
+  <meta name="robots" content="index, follow">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+
+  <link rel="icon" type="img/x-icon" href="image/fav.png">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/w3.css">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R9G9BG90Z7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R9G9BG90Z7');
+</script>
+</head>
+
+<body class="EN" style="    background-image: linear-gradient(to right, #000000 0%, #434343 51%, #000000 100%); height: auto;">
+
+
+  <header class="header" id="header">
+    <section class="wrapper container">
+      <h2> Roll&nbsp; <span style="font-size: 0.6em;margin-left: -0.5em;text-transform: capitalize;">Falcon Xbots</span> </h2>
+
+      <button id="mobile-login" style="display: none" onclick="loginclick()" class="fa fa-sign-in button-3"
+        role="button"> Login</button>
+
+
+      <div class="burger" id="burger">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </div>
+      <span class="overlay"></span>
+      <nav class="navbar" id="navbar">
+        <ul class="menu" id="menu">
+
+          <li class="menu-item" id="login-btn" onclick="loginclick()" style="display: none">
+            <button class="fa fa-sign-in button-3" role="button"> Login</button>
+          </li>
+
+          <li class="menu-item" id="logout-btn" onclick="logiout()" style="display: none">
+            <button style="background-color: #892245" class="fa fa-sign-out button-3" role="button"> Logout</button>
+          </li>
+
+
+          <li class="menu-item">
+            <a href="/telegram" target="_blank" class="menu-link fa fa-telegram img-text-men"> Join
+              Telegram </a>
+          </li>
+          <li class="menu-item">
+            <a href="/facebook" target="_blank" class="menu-link fa fa-facebook img-text-men">
+              facebook </a>
+          </li>
+          <li class="menu-item">
+            <a href="/youtube" target="_blank" class="menu-link fa fa-youtube img-text-men"> YouTube</a>
+          </li>
+
+        </ul>
+      </nav>
+    </section>
+  </header>
+
+
+
+  <div class="main-out-container">
+    
+
+    <div class="" style="margin-top: 5em;">
+
+      <h2 class="hr-with-text"><span>session statistics</span></h2>
+
+      <div class="row ">
+        <div class="column lbl-card">
+          <label class="data-lbl"> ACCOUNT : </label>
+          <font class="" color="#ffffff"><label id="accountdata">*******</label></font>
+        </div>
+        <div class="column lbl-card">
+          <label class="data-lbl"> BALANCE : </label>
+          <font class="" color="#ffffff"><label id="lblBalance">00.00</label></font>
+          <font class="" color="#ffffff"><label id="lblBalancecurrncy"> USD</label></font>
+        </div>
+        <div class="column lbl-card">
+
+          <label class="data-lbl"> PROFIT : </label>
+          <label id="lblDolar"></label><label class="" id="lblProfit">0.00</label>
+          <font class="" color="27d907"><label id="lblProfitcurrncy"> USD</label></font>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column lbl-card">
+          <label class="data-lbl"> WIN </label>
+          <font color="#4caf50"><label id="lblQtyWin">0</label></font>
+          <font> | </font>
+          <label class="data-lbl"> LOSE </label>
+          <font color="#FF0000"><label id="lblQtyLose">0</label></font>
+        </div>
+        <div class="column lbl-card">
+          <label class="data-lbl"> DURATION : </label>
+          <font color="#e9af45"><label id="lblDurBot">00:00:00</label></font>
+          <input type="hidden" id="hiddenDurBot" value="0" />
+        </div>
+        <div class="column lbl-card">
+          <label class="data-lbl"> PING : </label>
+          <font color="#e9af45"><label id="lblPing">00</label> ms</font>
+        </div>
+      </div>
+
+  
+ 
+
+      <div class="main-contaner">
+
+        <div class="left-contaner">
+
+          <h2 class="hr-with-text"><span>strategy selector</span></h2>
+
+          <div class="menu market-menue markt-header" style="display: grid;">
+
+            <a id="aStra" class="button-3 m-btns" href="#" style="background: #f9f9f900;"
+              onclick="if(!checkIsRunning()){if(document.getElementById('selStra').value==''){$('#modalStra').modal();}else{$('#msSetting').modal();}}">
+              <span>Step (1)  &nbsp;</span> <i class="fa fa-lightbulb-o" aria-hidden="true"></i>  &nbsp;STRATEGY CHOOSER</a>
+            <a id="aRiskM" class="button-3 m-btns" href="#" style="background: #f9f9f900;"
+              onclick="if(!checkIsRunning()){$('#modalRiskM').modal();}">
+              <span>Step (2)  &nbsp;</span>   <i class="fa fa-shield" aria-hidden="true"></i>&nbsp; RISK MANAGEMENT</a>
+            <a id="aMoneyM" class="button-3 m-btns" href="#" style="background: #f9f9f900;"
+              onclick="if(!checkIsRunning()){$('#modalMoneyM').modal();}">
+              <span>Step (3)  &nbsp;</span>  <i class="fa fa-usd" aria-hidden="true"></i>&nbsp; MONEY MANAGEMENT</a>
+            <a id="aAddSet" class="button-3 m-btns" href="#" style="background: #f9f9f900;"
+              onclick="if(!checkIsRunning()){$('#modalAddSet').modal();}">
+              <i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp;ADDITIONAL SETTING</a>
+
+            
+              <h2 class="hr-with-text"><span>Trader on/off</span></h2>
+
+
+            <a id="aStart" class="button-3 m-btns" href="#" style="background: #345c21;    color: white;"
+              onclick="
+        if(document.getElementById('selStra').value==''){alert('Please choose your strategy.');}
+        else if(document.getElementById('checkVLossActive').checked && document.getElementById('checkedVToken').hidden){alert('Please validate your virtual token at Risk Management Setting');}
+        else {this.style.display='none'; document.getElementById('aWait').style.display='inline-block'; row=document.getElementById('tableLog').insertRow(0); row.insertCell(0).innerHTML=new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1')+' |'; row.insertCell(1).innerHTML='Load Strategy...'; loadScript('js/'+document.getElementById('selStra').value+'.js', function(){});}">
+
+              <i class="fa fa-play" aria-hidden="true"></i> &nbsp; S T A R T
+            </a>
+
+
+            <a class="button-3 m-btns" href="#" id="aStop" style="background: #933434; display: none;    color: white;"
+              onclick="this.style.display='none'; document.getElementById('aWait').style.display='inline-block';">
+              <i class="fa fa-stop" aria-hidden="true"></i> &nbsp; S T O P</a>
+            <a class="button-3 m-btns" id="aWait" style="background: #977512; display: none;    color: white;">
+              <i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; W A I T</a>
+
+          </div>
+
+        </div>
+        <input value="" type="hidden" id="txtToken" />
+
+        <div class="right-contaner">
+
+          <h2 class="hr-with-text"><span>trading output console </span></h2>
+
+          <div class="pLogCss" id="pLog">
+
+            <div dir="rtl" style=" height: 18em; overflow-y:scroll;padding-left: 1em;">
+              <font size="2">
+                <table dir="ltr" id="tableLog" width="100%" border="0" style="text-align: left;">
+                  <tr>
+                    <td id="firsttd0" style="width: 6em;"></td>
+                    <td id="firsttd1"></td>
+                  </tr>
+                </table>
+              </font>
+            </div>
+          </div>
+
+
+
+        </div>
+
+        <!-- Modal HTML embedded directly into document -->
+        <div id="modalMsg" class="modal" style="display: none;">
+          <p id="pModalMsg"></p>
+          <p align="right"><a class="buttonOK" href="#close" rel="modal:close">OK</a></p>
+        </div>
+
+        <div id="modalStra" class="modal" style="display: none;">
+          <table width="100%" border="0">
+            <tr>
+              <td>
+                <p align="left"><strong>STRATEGY CHOOSER</strong></p>
+                <table width="100%" border="0">
+                  <tr>
+                    <td width="30%" align="right">STRATEGY :</td>
+                    <td align="left">
+                      <div class="dropdown">
+                        <select class="dropdown-select" name="selStra" size="1" id="selStra">
+                          <option value="" disabled selected hidden>Please Choose...</option>
+                          <option style="background-color:#333; color:#FFF" disabled>UP/DOWN :</option>
+                          <option value="rf_rollcake">RISE/FALL - ROLL CAKE</option>
+                          <option value="rf_zigzag7ticks">RISE/FALL - ZIGZAG 7 TICKS</option>
+                          <option value="hl_rollcake">HIGHER/LOWER - ROLL CAKE</option>
+                          <option value="hl_zigzag7ticks">HIGHER/LOWER - ZIGZAG 7 TICKS</option>
+                          <option style="background-color:#333; color:#FFF" disabled>TOUCH/NO TOUCH :</option>
+                          <option value="tn_rollcake">TOUCH/NO TOUCH - ROLL CAKE</option>
+                          <option value="tn_zigzag7ticks">TOUCH/NO TOUCH - ZIGZAG 7 TICKS</option>
+                          <option style="background-color:#333; color:#FFF" disabled>DIGITS :</option>
+                          <option value="dd_rollcake">DIGIT DIFFER - ROLL CAKE</option>
+                          <option value="eo_rollcake">EVEN/ODD - ROLL CAKE</option>
+                          <option value="eo_zigzag7ticks">EVEN/ODD - ZIGZAG 7 TICKS</option>
+                          <option value="ou_rollcake">OVER/UNDER - ROLL CAKE</option>
+                          <option value="ou_zigzag7ticks">OVER/UNDER - ZIGZAG 7 TICKS</option>
+                        </select>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height="8px"></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td align="right">
+                      <a class="buttonSave" href="#"
+                        onclick="$.modal.close(); if(document.getElementById('selStra').value!=''){straLoading(); $('#msSetting').modal(); loadScript('js/'+document.getElementById('selStra').value+'_set.js', function(){});}">Next</a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div style="text-align:center" id="msSetting" class="modal" style="display: none;">
+          <!-- <img src="image/pageLoader.gif" width="64" height="64" alt="Loading..." /> -->
+        </div>
+
+        <div id="modalRiskM" class="modal" style="display: none;">
+          <table width="100%" border="0">
+            <tr>
+              <td>
+                <p align="left"><strong>RISK MANAGEMENT</strong></p>
+                <table width="100%" border="0">
+                  <tr>
+                    <td width="50%" align="right">
+                      <div class="tooltip"><img src="image/tooltips.png" width="20" height="20" alt="?" />
+                        <span class="tooltiptext">min 0.35</span>
+                      </div> STAKE :
+                    </td>
+                    <td align="left"><input name="txtStake" type="number" min="0.35" class="inputEZ" id="txtStake"
+                        value="1" /></td>
+                  </tr>
+                  <tr>
+                    <td align="right">TARGET PROFIT :</td>
+                    <td><input name="txtTP" type="number" min="0" class="inputEZ" id="txtTP" value="1" /><input
+                        style="transform:scale(1.5)" name="checkTP" type="checkbox" id="checkTP" checked="checked" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="right">STOP LOSS :</td>
+                    <td><input name="txtSL" type="number" min="0" class="inputEZ" id="txtSL" value="5" /><input
+                        style="transform:scale(1.5)" name="checkSL" type="checkbox" id="checkSL" checked="checked" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td height="15px"></td>
+                  </tr>
+                  <tr>
+                    <td align="right">
+                      <div class="tooltip"><img src="image/tooltips.png" width="20" height="20" alt="?" />
+                        <span class="tooltiptext">You can minimize risk with trading using virtual before switch to
+                          real.</span>
+                      </div> USING VIRTUAL LOSS :
+                    </td>
+                    <td><input style="transform:scale(1.5)" name="checkVLossActive" type="checkbox"
+                        id="checkVLossActive" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="right">
+                      <div class="tooltip"><img src="image/tooltips.png" width="20" height="20" alt="?" />
+                        <span class="tooltiptext">only accept virtual token</span>
+                      </div> VIRTUAL ACCOUNT TOKEN :
+                    </td>
+                    <td align="left"><input value="" name="txtVToken" type="password" class="inputToken" id="txtVToken"
+                        placeholder="virtual token"
+                        onchange="javascript:document.getElementById('checkedVToken').hidden=true;" /> <input
+                        name="btnVCheck" type="button" id="btnVCheck" value="Validate" class="buttonSave" onclick="checkVToken();" /> <img
+                        src="image/checked.png" alt="Authorized" name="checkedVToken" width="30" height="30"
+                        id="checkedVToken" /></td>
+                  </tr>
+                  <tr>
+                    <td align="right">
+                      <div class="tooltip"><img src="image/tooltips.png" width="20" height="20" alt="?" />
+                        <span class="tooltiptext">before go to real</span>
+                      </div> VIRTUAL LOSS (in a row) :
+                    </td>
+                    <td align="left"><input name="txtVLoss" type="number" min="1" class="inputEZ" id="txtVLoss"
+                        value="1" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="right">
+                      <div class="tooltip"><img src="image/tooltips.png" width="20" height="20" alt="?" />
+                        <span class="tooltiptext">when do you want bot switch to virtual ?</span>
+                      </div> BACK TO VIRTUAL :
+                    </td>
+                    <td align="left">
+                      <div class="dropdown">
+                        <select class="dropdown-select" name="selBackToV" size="1" id="selBackToV">
+                          <option value="ifrealwin" selected="selected">IF REAL WIN</option>
+                          <option value="ifreallose">IF REAL LOSE</option>
+                          <option value="ifrealwinlose">IF REAL WIN/LOSE</option>
+                          <option value="never">NEVER</option>
+                        </select>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td align="right">
+                      <a class="buttonSave" href="#close" rel="modal:close">Save</a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div id="modalMoneyM" class="modal" style="display: none;">
+          <table width="100%" border="0">
+            <tr>
+              <td>
+                <p align="left"><strong>MONEY MANAGEMENT</strong></p>
+                <table width="100%" border="0">
+                  <tr>
+                    <td width="50%" align="right">
+                      <div class="tooltip"><img src="image/tooltips.png" width="20" height="20" alt="?" />
+                        <span class="tooltiptext">fix stake will applied if martingale not active</span>
+                      </div> MARTINGALE :
+                    </td>
+                    <td align="left"><input style="transform:scale(1.5)" name="checkMarti" type="checkbox"
+                        id="checkMarti" checked="checked" /></td>
+                  </tr>
+                  <tr>
+                    <td align="right">
+                      <div class="tooltip"><img src="image/tooltips.png" width="20" height="20" alt="?" />
+                        <span class="tooltiptext">martingale will active after X real loss</span>
+                      </div> AFTER X LOSS :
+                    </td>
+                    <td><input name="txtMartiAfter" type="number" min="1" class="inputEZ" id="txtMartiAfter"
+                        value="1" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="right">
+                      <div class="tooltip"><img src="image/tooltips.png" width="20" height="20" alt="?" />
+                        <span class="tooltiptext">martingale multiplier</span>
+                      </div> MULTIPLIER :
+                    </td>
+                    <td><input name="txtMultiplier" type="number" min="1" class="inputEZ" id="txtMultiplier"
+                        value="2.5" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="right">
+                      <div class="tooltip"><img src="image/tooltips.png" width="20" height="20" alt="?" />
+                        <span class="tooltiptext">maximum martingale level</span>
+                      </div> MAX LEVEL :
+                    </td>
+                    <td><input name="txtMartiLevel" type="number" min="1" class="inputEZ" id="txtMartiLevel"
+                        value="3" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="right">WHEN MAX LEVEL ACHIEVED :</td>
+                    <td>
+                      <p>
+                        <label>
+                          <input type="radio" name="radgrpMaxAch" value="stopbot" id="radgrpMaxAch_0" checked />
+                          STOP BOT</label>
+                        <br />
+                        <label>
+                          <input name="radgrpMaxAch" type="radio" id="radgrpMaxAch_1" value="resetmarti" />
+                          RESET MARTINGALE</label>
+                        <br />
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td align="right">
+                      <a class="buttonSave" href="#close" rel="modal:close">Save</a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div id="modalAddSet" class="modal" style="display: none;">
+          <table width="100%" border="0">
+            <tr>
+              <td>
+                <p align="left"><strong>ADDITIONAL SETTING</strong></p>
+                <table width="100%" border="0">
+                  <tr>
+                    <td width="45%" align="right">
+                      <div class="tooltip"><img src="image/tooltips.png" width="20" height="20" alt="?" />
+                        <span class="tooltiptext">you can set delay (seconds) after win contract</span>
+                      </div> DELAY AFTER WIN :
+                    </td>
+                    <td align="left"><input name="txtDelayWin" type="number" min="0" class="inputEZ" id="txtDelayWin"
+                        value="0" /> SECOND(S)</td>
+                  </tr>
+                  <tr>
+                    <td align="right">
+                      <div class="tooltip"><img src="image/tooltips.png" width="20" height="20" alt="?" />
+                        <span class="tooltiptext">you can set delay (seconds) after lose contract</span>
+                      </div> DELAY AFTER LOSE :
+                    </td>
+                    <td><input name="txtDelayLose" type="number" min="0" class="inputEZ" id="txtDelayLose" value="0" />
+                      SECOND(S)</td>
+                  </tr>
+                  <tr>
+                    <td align="right">
+                      <div class="tooltip"><img src="image/tooltips.png" width="20" height="20" alt="?" />
+                        <span class="tooltiptext">you can stop bot automatically after timeout (minutes)</span>
+                      </div> BOT STOP AFTER :
+                    </td>
+                    <td><input name="txtStopAfter" type="number" min="1" class="inputEZ" id="txtStopAfter" value="60" />
+                      MINUTE(S)<input style="transform:scale(1.5)" name="checkStopAfter" type="checkbox"
+                        id="checkStopAfter" checked="checked" /></td>
+                  </tr>
+                  <tr>
+                    <td height="8px"></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td align="right">
+                      <a class="buttonSave" href="#close" rel="modal:close">Save</a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+
+      </div>
+
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="css/jquery.modal.min.css" />
+
+<!-- <script src="js/app.js"></script> -->
+<!-- encrypted -->
+<script src="js/app.roll.min.js"></script>
+
+</html>
