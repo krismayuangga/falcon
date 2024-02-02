@@ -1,0 +1,13 @@
+{
+    "name": "KinerjaBot",
+    "short_name": "KinerjaBot",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#F07440",
+    "background_color": "#F07440",
+    "icons": [{
+        "src": "https://trade.kinerja.io/favicon.png",
+        "sizes": "128x128",
+        "type": "image/png"
+    }]
+}
